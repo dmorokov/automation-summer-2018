@@ -1,25 +1,30 @@
-package lesson2;
+package lesson3;
 
+import base.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pageObjects.HomePage;
 
 import java.util.HashMap;
+
+import static org.testng.Assert.assertEquals;
 
 /**
  * Created by Danila_Morokov on 5/18/2018.
  */
-public class SimpleWithAnnotationsTest {
+public class SimplePageObjectTest extends TestBase {
 
     private ChromeOptions options;
-    private  WebDriver driver;
+    private WebDriver driver;
+
+    private HomePage homePage;
 
     @BeforeClass
     public void beforeClass() {
@@ -28,35 +33,28 @@ public class SimpleWithAnnotationsTest {
 
         options = new ChromeOptions();
         options.setExperimentalOption("prefs", chromePrefs);
-    }
-
-    @BeforeMethod
-    public void beforeMethod() {
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-    }
 
-    @AfterMethod
-    public void afterMethod() {
-        driver.close();
+        homePage = PageFactory.initElements(driver, HomePage.class);
     }
 
     @Test
     public void simpleSeleniumTest() {
-        driver.navigate().to("https://epam.github.io/JDI/index.html");
-        Assert.assertEquals(driver.getTitle(), "Index Page");
+        //1
+        homePage.open(driver);
+
+        //2
+        homePage.checkHomePageTitle(driver);
 
         //1 Login as user
-        WebElement userIcon = driver.findElement(By.cssSelector(".fa-user"));
-        userIcon.click();
-
-        driver.findElement(By.cssSelector("#Login")).sendKeys("epam");
-        driver.findElement(By.cssSelector("#Password")).sendKeys("1234");
-        driver.findElement(By.cssSelector(".form-horizontal button[type = 'submit']")).click();
+        homePage.login("epam", "1234");
 
         //2 Assert ...
         WebElement userName = driver.findElement(By.cssSelector(".profile-photo span"));
         Assert.assertTrue(userName.isDisplayed());
-        Assert.assertEquals(userName.getText(), "PITER CHAILOVSKII");
+        assertEquals(userName.getText(), "PITER CHAILOVSKII");
+
+        driver.close();
     }
 }

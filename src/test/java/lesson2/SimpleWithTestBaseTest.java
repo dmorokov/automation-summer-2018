@@ -33,7 +33,7 @@ public class SimpleWithTestBaseTest extends TestBase {
         WebDriver driver = new ChromeDriver(options);
         driver.manage().window().maximize();
 
-        driver.navigate().to("https://jdi-framework.github.io/tests/index.htm");
+        driver.navigate().to("https://epam.github.io/JDI/index.html");
         Assert.assertEquals(driver.getTitle(), "Index Page");
 
         //1 Login as user
@@ -57,7 +57,7 @@ public class SimpleWithTestBaseTest extends TestBase {
         WebDriver driver = new ChromeDriver(options);
         driver.manage().window().maximize();
 
-        driver.navigate().to("https://jdi-framework.github.io/tests/index.htm");
+        driver.navigate().to("https://epam.github.io/JDI/index.html");
         Assert.assertEquals(driver.getTitle(), "Index Page");
 
         //1 Login as user
@@ -81,7 +81,7 @@ public class SimpleWithTestBaseTest extends TestBase {
         WebDriver driver = new ChromeDriver(options);
         driver.manage().window().maximize();
 
-        driver.navigate().to("https://jdi-framework.github.io/tests/index.htm");
+        driver.navigate().to("https://epam.github.io/JDI/index.html");
         Assert.assertEquals(driver.getTitle(), "Index Page");
 
         //1 Login as user
