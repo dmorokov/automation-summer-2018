@@ -26,7 +26,7 @@ public class SimpleTest {
         WebDriver driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.navigate().to("https://epam.github.io/JDI/index.html");
-        Assert.assertEquals(driver.getTitle(), "Index Page");
+        Assert.assertEquals(driver.getTitle(), "Home Page");
 
         WebElement userIcon = driver.findElement(By.cssSelector(".fa-user"));
         userIcon.click();
