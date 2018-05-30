@@ -44,10 +44,10 @@ public class AllurePageObjectTest extends TestBase {
         //2
         homePage.checkHomePageTitle();
 
-        //1 Login as user
+        //3
         homePage.login("epam", "1234");
 
-        //2 Assert user name
+        //4
         homePage.checkUserName();
     }
 }

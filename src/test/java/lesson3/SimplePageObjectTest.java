@@ -1,20 +1,16 @@
 package lesson3;
 
 import base.TestBase;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pageObjects.HomePage;
 
 import java.util.HashMap;
-
-import static org.testng.Assert.assertEquals;
 
 /**
  * Created by Danila_Morokov on 5/18/2018.
@@ -39,6 +35,11 @@ public class SimplePageObjectTest extends TestBase {
         homePage = PageFactory.initElements(driver, HomePage.class);
     }
 
+    @AfterMethod
+    public void afterMethod() {
+        driver.close();
+    }
+
     @Test
     public void simpleSeleniumTest() {
         //1
@@ -47,14 +48,10 @@ public class SimplePageObjectTest extends TestBase {
         //2
         homePage.checkHomePageTitle(driver);
 
-        //1 Login as user
+        //3
         homePage.login("epam", "1234");
 
-        //2 Assert ...
-        WebElement userName = driver.findElement(By.cssSelector(".profile-photo span"));
-        Assert.assertTrue(userName.isDisplayed());
-        assertEquals(userName.getText(), "PITER CHAILOVSKII");
-
-        driver.close();
+        //4
+        homePage.checkUserIcon();
     }
 }
