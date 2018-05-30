@@ -23,7 +23,7 @@ public class HomePage {
     @FindBy(css = ".form-horizontal button[type = 'submit']")
     private WebElement submitButton;
 
-    public void open(WebDriver driver) {
+    public void openHomePage(WebDriver driver) {
         driver.navigate().to("https://epam.github.io/JDI/index.html");
     }
 

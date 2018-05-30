@@ -3,7 +3,9 @@ package lesson4;
 import base.TestBase;
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.SelenideElement;
+import listeners.AllureAttachmentListener;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -15,6 +17,7 @@ import static enums.Users.PITER_CHAILOVSKII;
 /**
  * Created by Danila_Morokov on 5/18/2018.
  */
+@Listeners({AllureAttachmentListener.class})
 public class SimpleTest extends TestBase {
 
     @Test

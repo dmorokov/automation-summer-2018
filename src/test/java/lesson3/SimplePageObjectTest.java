@@ -42,7 +42,7 @@ public class SimplePageObjectTest extends TestBase {
     @Test
     public void simpleSeleniumTest() {
         //1
-        homePage.open(driver);
+        homePage.openHomePage(driver);
 
         //2
         homePage.checkHomePageTitle(driver);
